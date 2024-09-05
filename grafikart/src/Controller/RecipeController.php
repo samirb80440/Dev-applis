@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Demo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,10 +10,15 @@ use App\Repository\RecipeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Recipe;
 use App\Form\RecipeType;
-
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RecipeController extends AbstractController
 {
+
+
+    
+
 
     #[Route('/recettes', name: 'recipe.index')]
     public function index(Request $request, RecipeRepository $repository, EntityManagerInterface $em): Response
@@ -43,8 +48,8 @@ class RecipeController extends AbstractController
     }
 
     #[Route('/recettes/{id}/edit', name: 'recipe.edit', methods:['GET','POST'])]
-    public function edit(Recipe $recipe, Request $request, EntityManagerInterface $em) {
-        $form = $this->createForm(RecipeType::class, $recipe);
+    public function edit(Recipe $recipe, Request $request, EntityManagerInterface $em,FormFactoryInterface $formFactory) {
+        $form = $formFactory->create(RecipeType::class, $recipe);
         $form->handleRequest($request);
        if ($form->isSubmitted()&& $form->isValid()) {
             $em->flush();
