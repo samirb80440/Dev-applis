@@ -181,13 +181,6 @@ class Utilisateur
     /**
      * @return Collection<int, Utilisateur>
      */
-   
-
-   
-
-   
-
-  
 
 
     /**

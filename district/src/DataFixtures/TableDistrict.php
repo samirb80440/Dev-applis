@@ -4,6 +4,8 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use App\Entity\Categorie;
+use App\Entity\Commande;
 
 class TableDistrict extends Fixture
 {
@@ -12,6 +14,14 @@ class TableDistrict extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
+     
+     
+     
+     
+     
+     
+     
+     
         $manager->flush();
     }
 }
