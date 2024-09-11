@@ -5,14 +5,63 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
+use App\Repository\CategorieRepository;
+use App\Repository\PlatRepository;
 
 class CatalogueController extends AbstractController
 {
-    #[Route('/catalogue', name: 'app_catalogue')]
+    private $categorieRepo;
+    private $platRepo;
+
+    public function __construct(CategorieRepository $categorieRepo, PlatRepository $platRepo)
+    {
+        $this->categorieRepo = $categorieRepo;
+        $this->platRepo = $platRepo;
+    }
+
+    #[Route('/', name: 'app_index')]
     public function index(): Response
     {
+        $categories = $this->categorieRepo->findAll();
+        $plats = $this->platRepo->findAll();
+
         return $this->render('catalogue/index.html.twig', [
             'controller_name' => 'CatalogueController',
+            'categories' => $categories,
+            'plats' => $plats,
+        ]);
+    }
+
+    #[Route('/plats', name: 'app_plat')]
+    public function Showplats(): Response
+    {
+        $plats = $this->platRepo->findAll();
+
+        return $this->render('catalogue/index.html.twig', [
+            'controller_name' => 'CatalogueController',
+            'plats' => $plats,
+        ]);
+    }
+
+    #[Route('/plats/categorie_id', name: 'app_platcat', requirements:['categorie_id' =>'\d+'])]
+    public function Showplatscat(int $categorie_id): Response
+    {
+        $plats = $this->platRepo->findPlatByCategorieId($categorie_id);
+        return $this->render('catalogue/index.html.twig', [
+            'controller_name' => 'CatalogueController',
+            'plats'=>$plats
+        ]);
+    }
+
+    #[Route('/categories', name: 'app_category')]
+    public function Showcat(): Response
+    {
+        $categories = $this->categorieRepo->findAll();
+        
+        return $this->render('catalogue/index.html.twig', [
+            'controller_name' => 'CatalogueController',
+            'categories' => $categories,
         ]);
     }
 }

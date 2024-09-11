@@ -15,4 +15,13 @@ class PanierController extends AbstractController
             'controller_name' => 'PanierController',
         ]);
     }
+  
+    #[Route('/panier', name: 'app_panier')]
+    public function Addplats(): Response
+    {
+        return $this->render('panier/index.html.twig', [
+            'controller_name' => 'PanierController',
+        ]);
+    }
+
 }
