@@ -26,7 +26,7 @@ class TableDistrict extends Fixture
 
         $categorieburger = new Categorie();
         $categorieburger->setLibelle("Burger");
-        $categorieburger->setImage("burger_cat.jp");
+        $categorieburger->setImage("burger_cat.jpg");
         $categorieburger->setActive("Yes");
         $manager->persist($categorieburger);
 
@@ -146,7 +146,7 @@ class TableDistrict extends Fixture
         $platsSaladeCesar->setLibelle("Salade César");
         $platsSaladeCesar->setDescription("Une délicieuse salade Caesar (César) composée de filets de poulet grillés, de feuilles croquantes de salade romaine, de croutons à l'ail, de tomates cerise et surtout de sa fameuse sauce Caesar. Le tout agrémenté de copeaux de parmesan.");
         $platsSaladeCesar->setPrix("7.00");
-        $platsSaladeCesar->setImage("cesar_salade.jpg");
+        $platsSaladeCesar->setImage("cesar_salad.jpg");
         $platsSaladeCesar->setActive("Yes");
         $platsSaladeCesar->setCategorie($categorieSalade);
         $manager->persist($platsSaladeCesar);

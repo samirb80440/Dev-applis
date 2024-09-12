@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}plat{% endblock %}
+
+{% block body %}  
+   
+
+       
+           <div class="fs-1 ms-md-5 red container-fluid g-0 row">Nos plats  :</div>
+                    {% for plats in plat %}
+           <div class="row justify-content-center mt-3">
+
+        <div class=" cards col-4 flex-row mt-3 mx-md-5 " style="width: 35rem;">
+                       <a href="commande.php?platcom={{plats.id }}"></a>
+                                <img src="{{ asset ('images_the_district/food/' ~ plats.image) }}" class="imageanime imageplat img-fluid" alt="{{ plats.libelle }}'_food" style="width: 10rem; height: fit-content;">
+                                <div class="card-body">
+                                 <h5 class="card-title mt-md-4">{{ plats.libelle }}</h5>
+                          <p class="card-text texte">{{ plats.description }}</p>
+                           <p class="card-text texte">{{ plats.prix}}</p>
+                          <div class="d-flex justify-content-end">
+                             <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-light" name="platcom" value="'.$plat['id'].'">Ajouter</button>
+                             </div>
+                              </div>
+                               </div>
+                                </div>
+                                 </div>
+                                 </div>
+                    
+
+                 {% endfor %}
+
+
+
+{% endblock %}
