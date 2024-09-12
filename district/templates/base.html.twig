@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="shortcut icon" type="image/png" href="assets/images_the_district/the_district_brand/favicon.png">
-    <link rel="stylesheet" href="{{ asset('symphony/style.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset ('images_the_district/the_district_brand/favicon.png')}}"/>
+    <link rel="stylesheet" href="{{ asset('symphony.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     {% block stylesheets %}
     {% endblock %}
@@ -12,9 +12,10 @@
     {% block javascripts %}
       {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
- <header id="navbar">
+    </head>
+      <header id="navbar">
         <nav class="navbar navbar-expand-sm bg-danger navbar-dark">
-            <a class="navbar-brand" href="#"><img src="assets/images_the_district/the_district_brand/logo_transparent.png"
+            <a class="navbar-brand" href="#"><img src="{{ asset ('images_the_district/the_district_brand/logo_transparent.png') }}"
                     width="50" class="d-inline-block align-text-top" alt="navicon"></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -38,8 +39,62 @@
                 </ul>
             </div>
         </nav>
-  
+      </header>
+      <body>
       {% block body %}{% endblock %}
+ 
+ 
+   <footer>
+  <!-- Navigation du pied de page -->
+  <nav id="navbot" class="navbar navbar-expand bg-danger  mt-3 container d-flex rounded-pill   col-lg-12 justify-content-center">
+    <!-- Contenu de la navigation -->
+    <div class="collapse navbar-collapse justify-content-center row" id="collapsibleNavbar2">
+      <!-- Liste des éléments de navigation -->
+      <ul class="navbar-nav d-flex flex-wrap  justify-content-center">
+        <!-- Élément de navigation : Accueil -->
+        <li class="nav-item">
+          <a class="nav-link active" href="https://www.facebook.com/?locale=fr_FR" title="Accueil">
+            <!-- Image de l'icône Facebook -->
+            <img src="{{ asset ('images_the_district/icons8-facebook-50.png')}}" class="img-fluid align-text-top" alt="navfb">
+          </a>
+        </li>
+        <!-- Élément de navigation : Catégorie -->
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.pinterest.fr/" title="Categorie">
+            <!-- Image de l'icône Pinterest -->
+            <img src="{{ asset ('images_the_district/icons8-pinterest-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navpin">
+          </a>
+        </li>
+        <!-- Élément de navigation : Plat -->
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.snapchat.com/fr-FR" title="Plat">
+            <!-- Image de l'icône Snapchat -->
+            <img src="{{ asset ('images_the_district/icons8-snapchat-circled-logo-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navsnap">
+          </a>
+        </li>
+        <!-- Élément de navigation : Contact -->
+        <li class="nav-item">
+          <a class="nav-link" href="https://x.com/?lang=fr" title="contact">
+            <!-- Image de l'icône Twitter -->
+            <img src="{{ asset ('images_the_district/icons8-twitter-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navtwi">
+          </a>
+        </li>
+        <!-- Élément de navigation : Contact -->
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.instagram.com/" title="contact">
+            <!-- Image de l'icône Instagram -->
+            <img src="{{ asset ('images_the_district/icons8-instagram-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navinta">
+          </a>
+        </li>
+      </ul>
+     
     </div>
-  </body>
+  </nav>
+</footer>
+ 
+ </body>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

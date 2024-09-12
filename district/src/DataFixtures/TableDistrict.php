@@ -6,6 +6,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Categorie;
 use App\Entity\Plat;
+use App\Entity\Detail;
+use App\Entity\User;
+use App\Entity\Commande;
 
 class TableDistrict extends Fixture
 {
@@ -28,29 +31,18 @@ class TableDistrict extends Fixture
         $manager->persist($categorieburger);
 
 
+        $categoriewrap = new Categorie();
+        $categoriewrap->setLibelle("Wrap");
+        $categoriewrap->setImage("wrap_cat.jpg");
+        $categoriewrap->setActive("Yes");
+        $manager->persist($categoriewrap);
 
 
         $categoriepasta = new Categorie();
-        $categoriepasta->setLibelle("Wrap");
+        $categoriepasta->setLibelle("Pasta");
         $categoriepasta->setImage("pasta_cat.jpg");
         $categoriepasta->setActive("Yes");
         $manager->persist($categoriepasta);
-
-
-
-        $categoriePasta = new Categorie();
-        $categoriePasta->setLibelle("Pasta");
-        $categoriePasta->setImage("wrap_cat.jpg");
-        $categoriePasta->setActive("Yes");
-        $manager->persist($categoriePasta);
-
-
-
-        $categorieSandwich = new Categorie();
-        $categorieSandwich->setLibelle("Sandwich");
-        $categorieSandwich->setImage("sandwich_cat.jpg");
-        $categorieSandwich->setActive("Yes");
-        $manager->persist($categorieSandwich);
 
 
 
@@ -69,6 +61,7 @@ class TableDistrict extends Fixture
         $platPizzaBianca->setPrix("14.00");
         $platPizzaBianca->setImage("pizza-salmon.png");
         $platPizzaBianca->setActive("Yes");
+        $platPizzaBianca->setCategorie($categoriepizza);
         $manager->persist($platPizzaBianca);
 
 
@@ -79,6 +72,7 @@ class TableDistrict extends Fixture
         $platPizzaMargherita->setPrix("14.00");
         $platPizzaMargherita->setImage("pizza-margherita.jpg");
         $platPizzaMargherita->setActive("Yes");
+        $platPizzaMargherita->setCategorie($categoriepizza);
         $manager->persist($platPizzaMargherita);
 
 
@@ -89,6 +83,7 @@ class TableDistrict extends Fixture
         $platDistrictBurger->setPrix("8.00");
         $platDistrictBurger->setImage("hamburger.jpg");
         $platDistrictBurger->setActive("Yes");
+        $platDistrictBurger->setCategorie($categorieburger);
         $manager->persist($platDistrictBurger);
 
 
@@ -98,6 +93,7 @@ class TableDistrict extends Fixture
         $platCheesburger->setPrix("8.00");
         $platCheesburger->setImage("cheesburger.jpg");
         $platCheesburger->setActive("Yes");
+        $platCheesburger->setCategorie($categorieburger);
         $manager->persist($platCheesburger);
 
 
@@ -108,6 +104,7 @@ class TableDistrict extends Fixture
         $platBuffaloChickenWrap->setPrix("5.00");
         $platBuffaloChickenWrap->setImage("buffalo-chicken.webp");
         $platBuffaloChickenWrap->setActive("Yes");
+        $platBuffaloChickenWrap->setCategorie($categoriewrap);
         $manager->persist($platBuffaloChickenWrap);
 
 
@@ -118,6 +115,7 @@ class TableDistrict extends Fixture
         $platSpaghettiLegumes->setPrix("10.00");
         $platSpaghettiLegumes->setImage("spaghetti-legumes.jpg");
         $platSpaghettiLegumes->setActive("Yes");
+        $platSpaghettiLegumes->setCategorie($categoriepasta);
         $manager->persist($platSpaghettiLegumes);
 
 
@@ -128,6 +126,7 @@ class TableDistrict extends Fixture
         $platsLasagnes->setPrix("12.00");
         $platsLasagnes->setImage("lasagnes_viande.jpg");
         $platsLasagnes->setActive("Yes");
+        $platsLasagnes->setCategorie($categoriepasta);
         $manager->persist($platsLasagnes);
 
 
@@ -138,6 +137,7 @@ class TableDistrict extends Fixture
         $platsTagliatellesSaumon->setPrix("12.00");
         $platsTagliatellesSaumon->setImage("tagliatelles_saumon.webp");
         $platsTagliatellesSaumon->setActive("Yes");
+        $platsTagliatellesSaumon->setCategorie($categoriepasta);
         $manager->persist($platsTagliatellesSaumon);
 
 
@@ -148,7 +148,78 @@ class TableDistrict extends Fixture
         $platsSaladeCesar->setPrix("7.00");
         $platsSaladeCesar->setImage("cesar_salade.jpg");
         $platsSaladeCesar->setActive("Yes");
+        $platsSaladeCesar->setCategorie($categorieSalade);
         $manager->persist($platsSaladeCesar);
+
+
+        $user1= new User();
+        $user1->setEmail('random@gmal.com');
+        $user1->setPassword('lol');
+        $user1->setNom('Rand');
+        $user1->setPrenom('Rando');
+        $user1->setTelephone('0619600722');
+        $user1->setAdresse('12 rue de la paix');
+        $user1->setCp('80000');
+        $user1->setVille('Amiens');
+        $user1->setRoles(['ROLE_ADMIN']);
+        
+        $manager->persist($user1);
+
+        $user2= new User();
+$user2->setEmail('cacao@yahoo.com');
+$user2->setPassword('cacao');
+$user2->setNom('Cacao');
+$user2->setPrenom('Bernard');
+$user2->setTelephone('0449452282');
+$user2->setAdresse('21 rue quatre cailloux'); // Fix the typo here
+$user2->setCp('80000');
+$user2->setVille('Amiens');
+$user2->setRoles(['ROLE_CLIENT']);
+        $manager->persist($user2);
+
+
+
+        $commande1= new Commande();
+        $commande1->setDateCommande(new \DateTimeImmutable());
+        $commande1->setTotal($platDistrictBurger->getPrix());
+        $commande1->setEtat(3);
+        $commande1->setUser($user1);
+        
+        $manager->persist($commande1);
+
+       $commande2= new Commande();
+       $commande2->setDateCommande(new \DateTimeImmutable());
+       $commande2->setTotal($platPizzaBianca->getPrix()+$platBuffaloChickenWrap->getprix());
+       $commande2->setEtat(2);
+       $commande2->setUser($user2);
+
+       $manager->persist($commande2);
+
+
+       $detail1 = new Detail();
+       $detail1->setQuantite(1);
+       $detail1->setCommande($commande1);
+       $detail1->setPlat($platDistrictBurger);
+
+       $manager->persist($detail1);
+
+       $detail2 = new Detail();
+       $detail2->setQuantite(1);
+       $detail2->setCommande($commande2);
+       $detail2->setPlat($platPizzaBianca);
+
+       $manager->persist($detail2);
+
+       $detail3 = new Detail();
+       $detail3->setQuantite(1);
+       $detail3->setCommande($commande2);
+       $detail3->setPlat($platBuffaloChickenWrap);
+
+       $manager->persist($detail3);
+      
+
+
+
 
 
         $manager->flush();

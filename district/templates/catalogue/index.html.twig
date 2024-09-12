@@ -1,20 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CatalogueController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="parallaxe">
+    <div class="fs-1  ms-md-5 red">Les Catégories Favorites :</div>
+    <div class="mid2 container my-5">
+        <div class="row justify-content-center mt-3">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/bedrouni/DEV bedrouni/Dev applis/district/src/Controller/CatalogueController.php</code></li>
-        <li>Your template at <code>/home/bedrouni/DEV bedrouni/Dev applis/district/templates/catalogue/index.html.twig</code></li>
-    </ul>
-</div>
+      {% for categorie in categories %}
+
+      <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                     <a  href="/Plat.php?numcat='.$category['id'].'">
+                            <img src="assets/images_the_district/category/'.$category['image'].'" class="imageanime imagecat img-fluid" alt="'.$category['libelle'].'">
+                            <div class="card-body">
+                            </div>
+                        </a>
+                    </div>
+
+
+
+
+
+
+
+
+
+
 {% endblock %}

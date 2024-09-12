@@ -38,7 +38,7 @@ class CatalogueController extends AbstractController
     {
         $plats = $this->platRepo->findAll();
 
-        return $this->render('catalogue/index.html.twig', [
+        return $this->render('catalogue/plat.html.twig', [
             'controller_name' => 'CatalogueController',
             'plats' => $plats,
         ]);
@@ -47,10 +47,13 @@ class CatalogueController extends AbstractController
     #[Route('/plats/categorie_id', name: 'app_platcat', requirements:['categorie_id' =>'\d+'])]
     public function Showplatscat(int $categorie_id): Response
     {
-        $plats = $this->platRepo->findPlatByCategorieId($categorie_id);
-        return $this->render('catalogue/index.html.twig', [
+        $categorie=$this->categorieRepo->find($categorie_id);
+
+        $plats = $this->platRepo->findBy(['categorie' => $categorie->getId()]);
+        return $this->render('catalogue/platcat.html.twig', [
             'controller_name' => 'CatalogueController',
-            'plats'=>$plats
+            'plats'=>$plats,
+            'categorie'=> $categorie
         ]);
     }
 
@@ -59,7 +62,7 @@ class CatalogueController extends AbstractController
     {
         $categories = $this->categorieRepo->findAll();
         
-        return $this->render('catalogue/index.html.twig', [
+        return $this->render('catalogue/category.html.twig', [
             'controller_name' => 'CatalogueController',
             'categories' => $categories,
         ]);
