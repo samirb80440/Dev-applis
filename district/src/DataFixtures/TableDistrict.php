@@ -166,15 +166,15 @@ class TableDistrict extends Fixture
         $manager->persist($user1);
 
         $user2= new User();
-$user2->setEmail('cacao@yahoo.com');
-$user2->setPassword('cacao');
-$user2->setNom('Cacao');
-$user2->setPrenom('Bernard');
-$user2->setTelephone('0449452282');
-$user2->setAdresse('21 rue quatre cailloux'); // Fix the typo here
-$user2->setCp('80000');
-$user2->setVille('Amiens');
-$user2->setRoles(['ROLE_CLIENT']);
+        $user2->setEmail('cacao@yahoo.com');
+        $user2->setPassword('cacao');
+        $user2->setNom('Cacao');
+        $user2->setPrenom('Bernard');
+        $user2->setTelephone('0449452282');
+        $user2->setAdresse('21 rue quatre cailloux'); // Fix the typo here
+        $user2->setCp('80000');
+        $user2->setVille('Amiens');
+        $user2->setRoles(['ROLE_CLIENT']);
         $manager->persist($user2);
 
 
@@ -189,7 +189,7 @@ $user2->setRoles(['ROLE_CLIENT']);
 
        $commande2= new Commande();
        $commande2->setDateCommande(new \DateTimeImmutable());
-       $commande2->setTotal($platPizzaBianca->getPrix()+$platBuffaloChickenWrap->getprix());
+       $commande2->setTotal($platPizzaBianca->getPrix()+$platSpaghettiLegumes->getprix());
        $commande2->setEtat(2);
        $commande2->setUser($user2);
 
@@ -213,7 +213,7 @@ $user2->setRoles(['ROLE_CLIENT']);
        $detail3 = new Detail();
        $detail3->setQuantite(1);
        $detail3->setCommande($commande2);
-       $detail3->setPlat($platBuffaloChickenWrap);
+       $detail3->setPlat($platSpaghettiLegumes);
 
        $manager->persist($detail3);
       

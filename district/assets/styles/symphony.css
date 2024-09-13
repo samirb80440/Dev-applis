@@ -9,7 +9,7 @@
 }
 
 body {
-    background: #000;
+    background-color: #000;
 }
 
 .parallaxe {
@@ -244,12 +244,12 @@ button {
 
 /* Commande */
 
-#body {
+/*#body {
     background-color: black;
     background-image: url("../images_the_district/fosyyyy.jpg");
     background-size: cover;
 
-}
+}*/
 
 .cardes {
     height: 100%;
