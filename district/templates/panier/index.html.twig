@@ -34,7 +34,7 @@
                     {% for element in dataPanier %}
 
                         <tr>
-                            <td class="text-center align-middle"><img src="{{ asset ('images_the_district/food/'~ element.plat.image) }}" alt="{{ element.plat.libelle }}-food" class="img-fluid imagepanier"></td>
+                            <td class="text-center align-middle"><img src="{{ asset ('images_the_district/food/'~ element.plat.image) }}" alt="{{ element.plat.libelle }}-food" class="imageplat img-fluid"></td>
                             <td class="text-center align-middle">{{ element.plat.libelle }}</td>
                             <td class="text-center align-middle">{{ element.plat.prix }} €</td>
                             <td class="text-center align-middle">{{ element.quantite }}</td>
