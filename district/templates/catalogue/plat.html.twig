@@ -20,7 +20,7 @@
                            <p class="card-text texte">{{ plats.prix}}</p>
                           <div class="d-flex justify-content-end">
                              <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-light" name="platcom" value="'.$plat['id'].'">Ajouter</button>
+                            <a href="{{ path ("app_ajout_panier" , {id: plats.id}) }}" class="btn btn-light" name="platcom" value="'.$plat['id'].'">Ajouter</a>
                              </div>
                               </div>
                                </div>

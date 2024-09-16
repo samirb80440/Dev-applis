@@ -36,6 +36,11 @@
                     <li class="textnav nav-item px-5">
                          <a class="nav-link {{ app.current_route == 'app_contact' ? 'active' : '' }}" href="{{ path('app_contact') }}" title="Contact">Contact</a>
                     </li>
+                    <li class="navbar-brand position-absolute end-0">
+                            <a href="{{ path ("app_panier") }}" class="btn btn-success">
+                                <i class="bi bi-cart"></i>
+                            </a>
+                        </li>
                 </ul>
             </div>
         </nav>

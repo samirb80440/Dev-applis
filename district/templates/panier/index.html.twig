@@ -1,20 +1,128 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PanierController!{% endblock %}
+{% block title %}Panier{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container-fluid">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/bedrouni/DEV bedrouni/Dev applis/district/src/Controller/PanierController.php</code></li>
-        <li>Your template at <code>/home/bedrouni/DEV bedrouni/Dev applis/district/templates/panier/index.html.twig</code></li>
-    </ul>
+<section class="bg-ligth p-3">
+<h1> Votre Panier </h1>
+</section>
+
+    <div class="row">
+
+        <div class="col-9">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+                        <th class="text-center"></th>
+                        <th class="text-center">Produit</th>
+                        <th class="text-center">Prix</th>
+                        <th class="text-center">Quantité</th>
+                        <th class="text-center">Total</th>
+                        <th class="text-center"></th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for element in dataPanier %}
+
+                        <tr>
+                            <td class="text-center align-middle"><img src="{{ asset ('images_the_district/food/'~ element.plat.image) }}" alt="{{ element.plat.libelle }}-food" class="img-fluid imagepanier"></td>
+                            <td class="text-center align-middle">{{ element.plat.libelle }}</td>
+                            <td class="text-center align-middle">{{ element.plat.prix }} €</td>
+                            <td class="text-center align-middle">{{ element.quantite }}</td>
+                            <td class="text-center align-middle">{{ element.plat.prix * element.quantite }} €</td>
+                            <td class="text-center align-middle">
+
+                                <a href="{{ path ("app_ajout_panier" , {id: element.plat.id}) }}" class="btn btn-success">
+                                    <i class="bi bi-cart-plus"></i>
+                                </a>
+                            
+                                <a href="{{ path ("app_enlever_panier" , {id: element.plat.id}) }}" class="btn btn-warning mx-3">
+                                    <i class="bi bi-cart-dash"></i>
+                                </a>
+
+                                <a href="{{ path ("app_supprimer_panier" , {id: element.plat.id}) }}" class="btn btn-danger">
+                                    <i class="bi bi-cart-x"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                        
+                    {% else %}
+
+                        <tr>
+                            <td colspan = "6" class="text-center">Votre Panier est vide</td>
+                        </tr>
+                        
+                    {% endfor %}
+
+                </tbody>
+
+                <tfoot class="d-md-none">
+                    <tr>
+                        <td colspan="4">Total :</td>
+                        <td class="text-end">{{ total }} €</td>
+                        <td class="text-end">
+                            <a href="{{ path ('app_supprimer_panier_all') }}" class="btn btn-danger">
+                                <i class="bi bi-cart-x"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tfoot> 
+
+            </table>
+
+        </div>
+
+
+        <div class="col-2 p-0">
+            <table class="bg-light col-1 table">
+                    <thead>
+                        <tr>
+                            <th class="text-start" scope="col">Total :</th>
+                            <td ></td>
+                            <td ></td>
+                            <th class="text-end">
+                                <a href="{{ path ('app_supprimer_panier_all') }}" class="btn btn-danger">
+                                    <i class="bi bi-cart-x"></i>
+                                </a>
+                            </th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {% for element in dataPanier %}
+
+                        <tr>
+                            <td class="text-center align-middle">{{ element.plat.prix }} €</td>
+                            <td class="text-center align-middle"> x </td>
+                            <td class="text-center align-middle">{{ element.quantite }}</td>
+                        </tr>
+                    {% else %}
+
+                        <tr>
+                            <td colspan = "5" class="text-center">Votre Panier est vide</td>
+                        </tr>
+                        
+                    {% endfor %}
+
+                        <tr>
+                                <td colspan="2" class="text-center">Sous-total ({{ dataPanier | length}} article{% if dataPanier | length > 1 %}s{% endif %}) : {{ total }}.00 €</td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
 </div>
 {% endblock %}
