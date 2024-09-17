@@ -9,9 +9,18 @@ use App\Entity\Plat;
 use App\Entity\Detail;
 use App\Entity\User;
 use App\Entity\Commande;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class TableDistrict extends Fixture
-{
+{   
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher){
+        $this->passwordHasher = $passwordHasher;
+    }
+
+
     public function load(ObjectManager $manager): void
     {
         // $product = new Product();
@@ -153,8 +162,15 @@ class TableDistrict extends Fixture
 
 
         $user1= new User();
-        $user1->setEmail('random@gmal.com');
+        $user1->setEmail('random@gmail.com');
         $user1->setPassword('lol');
+        
+        $Password1='lol';
+        $hashedPassword= $this->passwordHasher->hashPassword(
+            $user1,
+            $Password1
+        );
+        $user1->setPassword($hashedPassword);
         $user1->setNom('Rand');
         $user1->setPrenom('Rando');
         $user1->setTelephone('0619600722');
@@ -167,7 +183,12 @@ class TableDistrict extends Fixture
 
         $user2= new User();
         $user2->setEmail('cacao@yahoo.com');
-        $user2->setPassword('cacao');
+        $Password ='cacao';
+        $hashedPassword= $this->passwordHasher->hashPassword(
+            $user2,
+            $Password
+        );
+        $user2->setPassword($hashedPassword);
         $user2->setNom('Cacao');
         $user2->setPrenom('Bernard');
         $user2->setTelephone('0449452282');

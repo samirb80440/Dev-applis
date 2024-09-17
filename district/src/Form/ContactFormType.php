@@ -28,7 +28,7 @@ class ContactFormType extends AbstractType
             ])
             ->add('Email',EmailType::class,[
                 'attr' => [
-                    'class' => 'col-3 form-control'
+                    'class' => ' col-3 form-control texte'
                 ]
             ])
             ->add('Telephone',TextType::class,[
