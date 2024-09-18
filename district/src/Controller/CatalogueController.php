@@ -67,4 +67,12 @@ class CatalogueController extends AbstractController
             'categories' => $categories,
         ]);
     }
+
+
+
+
+
+
+
+
 }
