@@ -4,14 +4,17 @@ namespace App\Controller;
 
 use App\Entity\Commande;
 use App\Entity\Detail;
+use App\Manager\CommandeManager;
 use App\Form\CommandeType;
 use App\Repository\PlatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use App\EventSubvriber\MailCommandeSubscriber;
 
 class CommandeController extends AbstractController
 {
@@ -22,8 +25,12 @@ class CommandeController extends AbstractController
     }
 
     #[Route('/commande', name: 'app_commande')]    
-    public function index(Request $request,EntityManagerInterface $em,SessionInterface $session): Response
+    public function index(Request $request,EntityManagerInterface $em,SessionInterface $session,CommandeManager $cm): Response
     {
+
+
+        $panier = $session->get('panier', []);
+        if(!empty($panier)){
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
     
         /** @var \App\Entity\User $user */
@@ -50,7 +57,7 @@ class CommandeController extends AbstractController
             $commande->setEtat(0);
             $commande->setUser($user);
 
-            $em->persist($commande);
+            $cm->setCommande($commande);
 
             foreach($panier as $id => $quantite){
                 $plat = $this->PlatRepo->find($id);
@@ -66,11 +73,14 @@ class CommandeController extends AbstractController
 
                 $total += $plat->getPrix() * $quantite;
             }
-
-        return $this->redirectToRoute('app_index');
+            $session->set('panier', []);
+            return $this->redirectToRoute('app_index');
     } else {
         return $this->render('commande/index.html.twig',[
             'form' => $form
+
         ]);
+    }        }else {
+        return $this->redirectToRoute('app_panier');
     }
 }}
