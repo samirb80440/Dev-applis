@@ -3,7 +3,6 @@
 namespace App\EventSubscriber;
 use App\Event\CommandeEvent;
 use App\Event\ContactEvent;
-use App\Entity\Commande;
 use App\Service\MailService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -21,6 +20,7 @@ class MailingSubscriber implements EventSubscriberInterface
     $parameters = [
         "user" => $commande->getUser(),
         "commande" => $commande,
+        "details" => $commande->getDetails(),
         "datejour" => date("d-m-Y"),
         "dateheure" => date("H:m"),
         "datelivraison" => date('H:i:s', strtotime('+30 minutes', strtotime(date('H:i:s'))))
@@ -57,7 +57,7 @@ class MailingSubscriber implements EventSubscriberInterface
                             ['SendMailEventCommande',1]
                         ],
                         ContactEvent::class => [
-                            ['SendMailEventContact',1]
+                            ['SendMailEventContact',2]
                         ]
                     ];
                 }
