@@ -9,15 +9,15 @@
     
     <div class="fs-1  ms-md-5 red">Nos Catégories :</div>
 
-        <div class="row justify-content-center mt-3">
+        <div class="g-0 p-0 row justify-content-center">
 
 
       {% for categorie in categories %}
-        <div class="col-12 col-sm-6 col-md-4 mt-3">
+        <div class="carde col-12 col-sm-6 col-md-4 mt-3">
 
-      <div class="col-12 col-sm-6 col-lg-4 mt-3">
+      <div class="carde col-12 col-sm-6 col-md-4 mt-3 ">
                      <a  href="{{ path ('app_platcat' , {categorie_id: categorie.id} ) }}">
-                            <img src="{{ asset ('images_the_district/category/' ~ categorie.image) }}" class=" imagecat img-fluid" alt="{{ categorie.libelle }}">
+                            <img src="{{ asset ('images_the_district/category/' ~ categorie.image) }}" class=" imagecat" alt="{{ categorie.libelle }}">
                             <div class="card-body">
                             </div>
                         </a>

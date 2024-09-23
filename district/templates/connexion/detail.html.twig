@@ -3,12 +3,12 @@
 {% block title %}{% endblock %}
 
 {% block body %}
- <body style="background-color:purple;">
+ <body style="background-color:black;">
 <div class="container">
-<h1 class="my-2">Detail du compte</h1>
-    <div class="row justify-content-start">
+<h1 class="my-2 couleur ">Detail du compte</h1>
+    <div class="row justify-content-start couleur">
         <h2>mes informations personnel</h2>
-        <div class="card text-bg-primary my-3" >
+        <div class="card text-bg-dark my-3" >
             <div class="card-header">adresse</div>
             <div class="card-body">
                 <h5 class="card-title">{{ user.Nom }} {{ user.prenom | upper}}</h5>
@@ -24,7 +24,7 @@
     </div>
 
 
-<div class="row">
+<div class="row couleur">
 <h2>Mes commandes</h2>
 
 <table class="table table-striped-columns">

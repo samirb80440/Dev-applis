@@ -12,18 +12,7 @@ body {
     background-color: #000;
 }
 
-.parallaxe {
-    background-image: url("../images_the_district/fosyyyy.jpg");
-        min-height: 500px;
-    
-        background-attachment: fixed;
-    
-        background-position: center;
-    
-        background-repeat: no-repeat;
-    
-        background-size: cover;
-}
+
 .imagebanniere {
     width: 150vw;
     height: 20vw;
@@ -80,9 +69,8 @@ button {
 }
 
 
-p {
-    color: #F60707;
-}
+
+
 
 .red{
     color: crimson;

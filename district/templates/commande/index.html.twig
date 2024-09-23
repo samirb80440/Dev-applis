@@ -3,44 +3,44 @@
 {% block title %}Commande{% endblock %}
 
 {% block body %}
-
+    <body style="background-color:#000;">
         {{ form_errors(form) }}
 
         {{ form_start(form) }}
         
             <div class='container mt-4'>
-                <div class='row justify-content-center'>
+                <div class=' couleur row justify-content-center'>
                     <h1>Adresse de livraison</h1>
 
-                    <div class="col-12 mb-3">
+                    <div class=" couleur col-12 mb-3">
                         {{ form_row(form.nom) }}
                     </div>
                 
-                    <div class="col-12 mb-3">
+                    <div class=" couleur col-12 mb-3">
                         {{ form_row(form.prenom) }}
                     </div>
                 
-                    <div class="col-12 mb-3">
+                    <div class=" couleur col-12 mb-3">
                         {{ form_row(form.telephone) }}
                     </div>
                 
-                    <div class="col-12 mb-3">
+                    <div class="couleur col-12 mb-3">
                         {{ form_row(form.adresse) }}
                     </div>
                     
-                    <div class="col-6 mb-3">
+                    <div class="couleur col-6 mb-3">
                         {{ form_row(form.cp) }}
                     </div>
                     
-                    <div class="col-6 mb-3">
+                    <div class="couleur col-6 mb-3">
                         {{ form_row(form.ville) }}
                     </div>
                 
-                    <div class="col-6 mb-3">
+                    <div class="couleur col-6 mb-3">
                         {{ form_row(form.agreeTerms) }}
                     </div>
 
-                    <div class="col-6 mb-3">
+                    <div class="couleur col-6 mb-3">
                         {{ form_row(form.save) }}
                     </div>
 
@@ -48,5 +48,5 @@
             </div>
 
         {{ form_end(form) }}
-
+    </body>
 {% endblock %}
