@@ -21,11 +21,34 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
           
             $cm->setContact($contact);
+            $this->addFlash('success','Vous allez être contacter sous peu');
         return $this->redirectToRoute('app_index');
     } else {
         return $this->render('contact/index.html.twig',[
             'form' => $form
         ]);
     }
-}
+ }
+
+    #[Route('/politique_de_confidentialite', name: 'app_pdf')]
+    public function politiqueconf(): Response
+    {
+   
+    return $this->render('contact/politique_de_confidentialite.html.twig');
+ }
+
+
+
+   #[Route('/mention_legale', name: 'app_mention_legale')]
+ public function mention_legale(): Response
+ {
+    
+    return $this->render('contact/mention_legale.html.twig');
+ }
+
+
+
+
+
+
 }

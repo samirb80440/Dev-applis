@@ -71,6 +71,8 @@ class CommandeController extends AbstractController
                 $em->flush();
 
                 $this->ps->DeleteAllDish();
+                $this->addFlash('success','Vous allez être livré sous peu');
+
 
                 return $this->redirectToRoute('app_index');
             } else {

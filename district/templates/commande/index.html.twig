@@ -1,52 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commande{% endblock %}
+{% block title %}Commande
+{% endblock %}
 
 {% block body %}
-    <body style="background-color:#000;">
-        {{ form_errors(form) }}
+	<body style="background-color:#000;">
+		{{ form_errors(form) }}
 
-        {{ form_start(form) }}
-        
-            <div class='container mt-4'>
-                <div class=' couleur row justify-content-center'>
-                    <h1>Adresse de livraison</h1>
+		{{ form_start(form) }}
 
-                    <div class=" couleur col-12 mb-3">
-                        {{ form_row(form.nom) }}
-                    </div>
-                
-                    <div class=" couleur col-12 mb-3">
-                        {{ form_row(form.prenom) }}
-                    </div>
-                
-                    <div class=" couleur col-12 mb-3">
-                        {{ form_row(form.telephone) }}
-                    </div>
-                
-                    <div class="couleur col-12 mb-3">
-                        {{ form_row(form.adresse) }}
-                    </div>
-                    
-                    <div class="couleur col-6 mb-3">
-                        {{ form_row(form.cp) }}
-                    </div>
-                    
-                    <div class="couleur col-6 mb-3">
-                        {{ form_row(form.ville) }}
-                    </div>
-                
-                    <div class="couleur col-6 mb-3">
-                        {{ form_row(form.agreeTerms) }}
-                    </div>
+		<div class='container mt-4'>
+			<div class=' couleur row justify-content-center'>
+				<h1>Adresse de livraison</h1>
 
-                    <div class="couleur col-6 mb-3">
-                        {{ form_row(form.save) }}
-                    </div>
+				<div class=" couleur col-12 mb-3">
+					{{ form_row(form.nom) }}
+				</div>
 
-                </div>
-            </div>
+				<div class=" couleur col-12 mb-3">
+					{{ form_row(form.prenom) }}
+				</div>
 
-        {{ form_end(form) }}
-    </body>
+				<div class=" couleur col-12 mb-3">
+					{{ form_row(form.telephone) }}
+				</div>
+
+				<div class="couleur col-12 mb-3">
+					{{ form_row(form.adresse) }}
+				</div>
+
+				<div class="couleur col-6 mb-3">
+					{{ form_row(form.cp) }}
+				</div>
+
+				<div class="couleur col-6 mb-3">
+					{{ form_row(form.ville) }}
+				</div>
+
+				<div class="couleur col-6 mb-3">
+					<div>
+						<a href="{{ path ('app_pdf') }}" title="politique_de_confidentialité">
+							{{ form_label(form.agreeTerms) }}
+						</a>
+						{{ form_widget(form.agreeTerms) }}
+						{{ form_help(form.agreeTerms) }}
+						<div class="form-error">
+							{{ form_errors(form.agreeTerms) }}
+						</div>
+					</div>
+				</div>
+
+				<div class="couleur col-6 mb-3">
+					{{ form_row(form.save) }}
+				</div>
+
+			</div>
+		</div>
+
+		{{ form_end(form) }}
+	</body>
 {% endblock %}

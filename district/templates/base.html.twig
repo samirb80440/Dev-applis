@@ -37,25 +37,26 @@
                     <li class="textnav nav-item px-5">
                          <a class="nav-link {{ app.current_route == 'app_contact' ? 'active' : '' }}" href="{{ path('app_contact') }}" title="Contact">Contact</a>
                     </li>
-                        {% if app.user %}
+                                                  {% if app.user %}
 
-                        <li class="textnav nav-item px-5">
+                        <li class="nav-item px-5">
                             <a class="textnav nav-link {{ app.current_route == 'app_utilisateur' ? 'active' : ''}}" href="{{ path ('app_utilisateur', {nom: app.user.nom,prenom: app.user.prenom}) }}" title="contact">{{ app.user.nom }}</a>
                         </li>
 
-                        <li class="textnav nav-item px-5">
+                        <li class="nav-item px-5">
                             <a class="textnav nav-link {{ app.current_route == 'app_logout' ? 'active' : ''}}" href="{{ path ('app_logout') }}" title="contact">Deconnexion</a>
                         </li>
 
                         {% else %}
 
-                       <li class="textnav nav-item px-5">
+                        <li class="nav-item ms-md-5 px-5">
                             <a class="textnav nav-link {{ app.current_route == 'app_login' ? 'active' : ''}}" href="{{ path ('app_login') }}" title="contact">Connexion</a>
                         </li>
 
-                      <li class="textnav nav-item px-5">
+                        <li class="nav-item px-5">
                             <a class="textnav nav-link {{ app.current_route == 'app_register' ? 'active' : ''}}" href="{{ path ('app_register') }}" title="contact">Nouveau utilisateur</a>
                         </li>
+
                         {% endif %}
                         <li class="textnav nav-item px-5">
                             <a href="{{ path ("app_panier") }}" class="btn btn-danger">
@@ -67,51 +68,57 @@
         </nav>
       </header>
       <body>
+       {% include 'partiales/flash.html.twig' %}
       {% block body %}{% endblock %}
  
  
    <footer>
   <!-- Navigation du pied de page -->
-  <nav id="navbot" class="navbar navbar-expand bg-danger  mt-3 container d-flex rounded-pill   col-lg-12 justify-content-center">
+  <nav  class="navbar navbar-expand bg-danger  mt-3 container d-flex rounded-pill   col-lg-12 justify-content-center">
     <!-- Contenu de la navigation -->
     <div class="collapse navbar-collapse justify-content-center row" id="collapsibleNavbar2">
       <!-- Liste des éléments de navigation -->
       <ul class="navbar-nav d-flex flex-wrap  justify-content-center">
         <!-- Élément de navigation : Accueil -->
-        <li class="nav-item">
-          <a class="nav-link active" href="https://www.facebook.com/?locale=fr_FR" title="Accueil">
+        <li class="nav-item px-5">
+          <a class="nav-link active" href="https://www.facebook.com/?locale=fr_FR" title="facebook">
             <!-- Image de l'icône Facebook -->
             <img src="{{ asset ('images_the_district/icons8-facebook-50.png')}}" class="img-fluid align-text-top" alt="navfb">
           </a>
         </li>
         <!-- Élément de navigation : Catégorie -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.pinterest.fr/" title="Categorie">
+        <li class="nav-item px-5">
+          <a class="nav-link" href="https://www.pinterest.fr/" title="pinterest">
             <!-- Image de l'icône Pinterest -->
             <img src="{{ asset ('images_the_district/icons8-pinterest-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navpin">
           </a>
         </li>
         <!-- Élément de navigation : Plat -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.snapchat.com/fr-FR" title="Plat">
+        <li class="nav-item px-5">
+          <a class="nav-link" href="https://www.snapchat.com/fr-FR" title="snapchat">
             <!-- Image de l'icône Snapchat -->
             <img src="{{ asset ('images_the_district/icons8-snapchat-circled-logo-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navsnap">
           </a>
         </li>
         <!-- Élément de navigation : Contact -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://x.com/?lang=fr" title="contact">
+        <li class="nav-item px-5">
+          <a class="nav-link" href="https://x.com/?lang=fr" title="twitter=X">
             <!-- Image de l'icône Twitter -->
             <img src="{{ asset ('images_the_district/icons8-twitter-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navtwi">
           </a>
         </li>
         <!-- Élément de navigation : Contact -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.instagram.com/" title="contact">
+        <li class="nav-item px-5">
+          <a class="nav-link" href="https://www.instagram.com/" title="instagram">
             <!-- Image de l'icône Instagram -->
             <img src="{{ asset ('images_the_district/icons8-instagram-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navinta">
           </a>
         </li>
+        <li class="nav-item px-5">
+           <a class="nav-link" href="{{ path ('app_mention_legale') }}" title="mention_legales"><img src="{{ asset ('images_the_district/icons8-légal-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navyt"></a>
+          </li>
+          <li class="nav-item px-5">
+            <a class="nav-link" href="{{ path ('app_pdf') }}" title="politique_de_confidentialité"><img src="{{ asset ('images_the_district/icons8-politique-de-confidentialité-50.png')}}" class="img-fluid d-inline-block align-text-top" alt="navyt"></a>
       </ul>
      
     </div>
