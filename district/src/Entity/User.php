@@ -59,11 +59,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'user')]
     private Collection $commandes;
 
+   
+
+   
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+       
+        
     }
 
+
+
+
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +113,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return array_unique($roles);
     }
+
+    
 
     /**
      * @param list<string> $roles
@@ -241,4 +253,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+  
+   
+  
+    
 }
