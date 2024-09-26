@@ -38,8 +38,8 @@ class CommandeController extends AbstractController
         $panier = $this->ps->ShowPanier();
 
         if (!empty($panier)) {
-            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
+            $this->denyAccessUnlessGranted('ROLE_CLIENT');
+            
             /** @var \App\Entity\User $user */
             $user = $this->getUser();
 

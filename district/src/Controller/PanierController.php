@@ -19,7 +19,8 @@ class PanierController extends AbstractController
     
     #[Route('/panier', name: 'app_panier')]
     public function index(): Response
-    {
+    {    
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
         $panier = $this->PS->ShowPanier();
 
         $dataPanier = $this->PS->ShowDataPanier();

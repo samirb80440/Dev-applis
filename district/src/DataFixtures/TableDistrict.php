@@ -195,7 +195,7 @@ class TableDistrict extends Fixture
         $user2->setAdresse('21 rue quatre cailloux'); // Fix the typo here
         $user2->setCp('80000');
         $user2->setVille('Amiens');
-        $user2->setRoles(['ROLE_CLIENT']);
+        $user2->setRoles(['ROLE_CHEF']);
         $manager->persist($user2);
 
 
