@@ -3,7 +3,7 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<body style="background-color:#000;">
+
 
 <form method="post">
     {% if error %}
@@ -16,7 +16,7 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Connecter vous</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control couleur" autocomplete="email" required autofocus>
     <label for="inputPassword">Password</label>
@@ -36,5 +36,5 @@
         Sign in
     </button>
 </form>
-</body>
+
 {% endblock %}

@@ -10,3 +10,268 @@
     
         background-size: cover;
 }
+
+
+
+
+#parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /*horizontal*/
+    grid-template-rows: 0.5fr 0, 6fr;
+    /*vertical*/
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+body {
+    background-color: #000;
+}
+
+
+.imagebanniere {
+    width: 150vw;
+    height: 20vw;
+}
+
+.couleur {
+    color: white
+}
+
+#banniere {
+    grid-area: 2 / 1 / 3 / 6;
+}
+
+#recherche {
+    grid-area: 2 / 3 / 3 / 4;
+    margin-top: 10vw;
+}
+
+.imagecat {
+    margin-top: 1px;
+    padding: 0;
+    border-radius: 16%;
+    border: 4px solid #EB1A1A;
+    width: 18vw;
+    height: 25vh;
+}
+
+.imageplat {
+    margin-top: 1px;
+    padding: 0;
+    border-radius: 16%;
+    border: 4px solid #EB1A1A;
+    width: 18vw;
+    height: 15vh;
+}
+
+#video {
+    width: 100%;
+    object-fit: fill;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+
+
+button {
+    color: #B09595;
+}
+
+
+
+
+
+.red{
+    color: crimson;
+}
+
+
+.color-B09595 {
+    background-color: #B09595;
+    border-radius: 16%;
+    border: 4px solid #F60707;
+
+}
+
+#img-top {
+    width: 100vw;
+    height: 40vh;
+}
+
+.textnav {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.imageanime {
+    transition: 1s ease;
+}
+
+.imageanime:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s ease;
+}
+
+@media screen and (max-width: 926px) {
+    #navbot {
+        margin-left: 0vw;
+        width: 100vw;
+    }
+
+    .imagecat {
+        width: 50vw;
+    }
+
+    .imageplat {
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #navbot {
+        margin-left: 0vw;
+        width: 100vw;
+    }
+
+    .imagecat {
+        width: 100vw;
+    }
+
+    .imageplat {
+        width: 100vw;
+    }
+}           
+/* acceuil */
+
+/* Catégorie */
+
+.imagecat {
+    margin-top: 1px;
+    padding: 0;
+    border-radius: 16%;
+    border: 4px solid #EB1A1A;
+    width: 18vw;
+    height: 25vh;
+}
+
+.imageplat {
+    margin-top: 1px;
+    padding: 0;
+    border-radius: 16%;
+    border: 4px solid #EB1A1A;
+    width: 18vw;
+    height: 15vh;
+}
+.imageanime {
+    transition: 1s ease;
+}
+
+.imageanime:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s ease;
+}
+
+.h1 {
+    color: white;
+}
+
+.carde{
+    background-color: black;
+}
+
+.red{
+    color: crimson;
+}
+
+button {
+    color: #B09595;
+}
+
+.color-B09595 {
+    background-color: #B09595;
+    border-radius: 16%;
+    border: 4px solid #F60707;
+
+}
+
+/* Plat */
+
+.cards {
+    height: 100%;
+    width: auto;
+    /* Assure que toutes les cartes dans un même row ont la même hauteur */
+    background-color: #E37D1F;
+}
+
+.card-body {
+    height: calc(100% - 200px);
+    /* Prend tout l'espace disponible moins la hauteur de l'image */
+    border-radius: 16%;
+}
+
+.titre{
+    color: crimson;
+}
+
+.texte{
+    color:white
+}
+
+.imageplat {
+
+    border-radius: 16%;
+    width: 10, 5vw;
+    height: 20vh;
+}
+
+button {
+    color: #B09595;
+}
+
+.color-B09595 {
+    background-color: #B09595;
+    border-radius: 16%;
+    border: 4px solid #F60707;
+
+}
+
+/* Commande */
+
+/*#body {
+    background-color: black;
+    background-image: url("../images_the_district/fosyyyy.jpg");
+    background-size: cover;
+
+}*/
+
+.cardes {
+    height: 100%;
+    width: auto;
+    /* Assure que toutes les cartes dans un même row ont la même hauteur */
+    background-color: #E31FD0;
+}
+
+
+.couleur {
+    color: white
+}
+
+.color{
+    color:black
+}
+
+
+
+.imageplat {
+    border-radius: 16%;
+    width: 10, 5vw;
+    height: 20vh;
+}

@@ -140,15 +140,7 @@ class TableDistrict extends Fixture
 
 
 
-        $platsTagliatellesSaumon = new Plat();
-        $platsTagliatellesSaumon->setLibelle("Tagliatelles au saumon");
-        $platsTagliatellesSaumon->setDescription("Découvrez notre recette délicieuse de tagliatelles au saumon frais et à la crème qui qui vous assure un véritable régal !");
-        $platsTagliatellesSaumon->setPrix("12.00");
-        $platsTagliatellesSaumon->setImage("tagliatelles_saumon.webp");
-        $platsTagliatellesSaumon->setActive("Yes");
-        $platsTagliatellesSaumon->setCategorie($categoriepasta);
-        $manager->persist($platsTagliatellesSaumon);
-
+        
 
 
         $platsSaladeCesar = new Plat();
