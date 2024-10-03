@@ -2,14 +2,36 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\PlatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups; 
+use ApiPlatform\Metadata\ApiResource;
+
 
 #[ORM\Entity(repositoryClass: PlatRepository::class)]
+#[ApiResource(
+    normalizationContext: ['groups' => ['plats:read']],
+    denormalizationContext: ['groups' => ['plats:write']],
+    
+  operations :[
+    new Get(),  
+    //    new Put(),
+    //    new Patch(),
+    //    new Delete(),
+        new GetCollection(),
+    //    new Post(),
+  ]  
+    )]
 class Plat
 {
     #[ORM\Id]
@@ -19,22 +41,27 @@ class Plat
 
     #[Assert\NotBlank]
     #[ORM\Column(length: 50)]
+    #[Groups(['plats:read'])]
     private ?string $libelle = null;
 
     #[Assert\NotBlank]
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['plats:read'])]
     private ?string $description = null;
 
     #[Assert\NotBlank]
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
+    #[Groups(['plats:read'])]
     private ?string $prix = null;
 
     #[Assert\NotBlank]
     #[ORM\Column(length: 50)]
+    #[Groups(['plats:read'])]
     private ?string $image = null;
 
     #[Assert\NotBlank]
     #[ORM\Column]
+    #[Groups(['plats:read'])]
     private ?bool $active = null;
 
 

@@ -118,35 +118,9 @@ button {
     transition: 1s ease;
 }
 
-@media screen and (max-width: 926px) {
-    #navbot {
-        margin-left: 0vw;
-        width: 100vw;
-    }
 
-    .imagecat {
-        width: 50vw;
-    }
 
-    .imageplat {
-        width: 50vw;
-    }
-}
 
-@media screen and (max-width: 768px) {
-    #navbot {
-        margin-left: 0vw;
-        width: 100vw;
-    }
-
-    .imagecat {
-        width: 100vw;
-    }
-
-    .imageplat {
-        width: 100vw;
-    }
-}           
 /* acceuil */
 
 /* Catégorie */
@@ -275,3 +249,33 @@ button {
     width: 10, 5vw;
     height: 20vh;
 }
+
+@media screen and (max-width: 926px) {
+    #navbot {
+        margin-left: 0vw;
+        width: 100vw;
+    }
+
+    .imagecat {
+        width: 50vw;
+    }
+
+    .imageplat {
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #navbot {
+        margin-left: 0vw;
+        width: 100vw;
+    }
+
+    .imagecat {
+        width: 100vw;
+    }
+
+    .imageplat {
+        width: 100vw;
+    }
+}           
