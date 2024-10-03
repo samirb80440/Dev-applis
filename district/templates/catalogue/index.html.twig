@@ -3,6 +3,18 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+ <div id="parent">
+        <div id="banniere" class="row g-0">
+            <video id="video" class="col-12" src="{{ asset('videos/123629-728697948_small.mp4') }}"
+
+            style="width: 100vmax; height: 20vmax;" playsinline autoplay loop muted></video>
+        </div>
+        <div id="recherche" class="d-none d-sm-flex">
+            <form class="col-12" role="search">
+                <input class="form-control me-2" type="search" placeholder="Recherche..." aria-label="Search">
+            </form>
+        </div>
+    </div>
  <div class="parallaxe">
         <div class="fs-1 ms-md-5 red">Les Catégories Favorites :</div>
         <div class="mid2 container my-5">
