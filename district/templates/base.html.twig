@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset ('images_the_district/the_district_brand/favicon.png')}}"/>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet"  href="{{ asset('app.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+ 
     {% block stylesheets %}
     {% endblock %}
 
@@ -15,7 +16,7 @@
     {% endblock %}
     </head>
       <header id="navbar">
-        <nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+        <nav class="navbar navbar-expand-lg  d-flex bg-danger navbar-dark">
             <a class="navbar-brand" href="{{ path ('app_index') }}"><img src="{{ asset ('images_the_district/the_district_brand/logo_transparent.png') }}"
                     width="50" class="d-inline-block align-text-top" alt="navicon"></a>
 
@@ -58,7 +59,7 @@
                         </li>
 
                         {% endif %}
-                        <li class="textnav nav-item px-5">
+                        <li class="nav-item px-5">
                             <a href="{{ path ("app_panier") }}" class="btn btn-danger">
                                 <i class="bi bi-cart-fill"></i>
                             </a>
@@ -74,7 +75,7 @@
  
    <footer>
   <!-- Navigation du pied de page -->
-  <nav  class="navbar navbar-expand bg-danger  mt-3 container d-flex rounded-pill   col-lg-12 justify-content-center">
+  <nav id="navbot"  class="navbar navbar-expand bg-danger nav-resp  mt-3 container d-flex rounded-pill  col-lg-12justify-content-center">
     <!-- Contenu de la navigation -->
     <div class="collapse navbar-collapse justify-content-center row" id="collapsibleNavbar2">
       <!-- Liste des éléments de navigation -->

@@ -1,3 +1,14 @@
+#parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /*horizontal*/
+    grid-template-rows: 0.5fr 0, 6fr;
+    /*vertical*/
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+
 .parallaxe {
     background-image: url("../images_the_district/fosyyyy.jpg");
         min-height: 500px;
@@ -9,19 +20,6 @@
         background-repeat: no-repeat;
     
         background-size: cover;
-}
-
-
-
-
-#parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    /*horizontal*/
-    grid-template-rows: 0.5fr 0, 6fr;
-    /*vertical*/
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
 }
 
 body {
@@ -47,7 +45,7 @@ body {
     margin-top: 10vw;
 }
 
-.imagecat {
+.imagecats {
     margin-top: 1px;
     padding: 0;
     border-radius: 16%;
@@ -56,7 +54,7 @@ body {
     height: 25vh;
 }
 
-.imageplat {
+.imageplats {
     margin-top: 1px;
     padding: 0;
     border-radius: 16%;
@@ -118,9 +116,7 @@ button {
     transition: 1s ease;
 }
 
-
-
-
+  
 /* acceuil */
 
 /* Catégorie */
@@ -186,7 +182,7 @@ button {
 }
 
 .card-body {
-    height: calc(100% - 200px);
+    height: calc(50% );
     /* Prend tout l'espace disponible moins la hauteur de l'image */
     border-radius: 16%;
 }
@@ -250,32 +246,51 @@ button {
     height: 20vh;
 }
 
+
 @media screen and (max-width: 926px) {
     #navbot {
         margin-left: 0vw;
         width: 100vw;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+      .nav-resp{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    
+       }
+       .card-body {
+        height: calc(50% );
+        /* Prend tout l'espace disponible moins la hauteur de l'image */
+        border-radius: 16%;
+    }
+       
+       
     }
 
-    .imagecat {
-        width: 50vw;
-    }
+    
 
-    .imageplat {
-        width: 50vw;
-    }
-}
 
 @media screen and (max-width: 768px) {
     #navbot {
         margin-left: 0vw;
         width: 100vw;
     }
+   .nav-resp{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 
-    .imagecat {
-        width: 100vw;
-    }
-
-    .imageplat {
-        width: 100vw;
-    }
-}           
+   }
+   .card-body {
+    height: calc(50% );
+    /* Prend tout l'espace disponible moins la hauteur de l'image */
+    border-radius: 16%;
+}
+   
+}         
