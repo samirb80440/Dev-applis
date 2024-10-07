@@ -1,7 +1,8 @@
 <?php
-
+// Définition du namespace pour le contrôleur
 namespace App\Controller;
 
+// Importation des classes nécessaires
 use App\Entity\Contact;
 use App\Manager\ContactManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,46 +11,56 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ContactFormType;
 
+// Définition de la classe ContactController qui hérite de AbstractController
 class ContactController extends AbstractController
 {
+    // Définition de la route pour la page de contact
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request,ContactManager  $cm): Response
-    {   
-        $this->denyAccessUnlessGranted('ROLE_CLIENT'); 
-        $contact = new Contact();
-        $form = $this->createForm(ContactFormType::class, $contact);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
-          
-            $cm->setContact($contact);
-            $this->addFlash('success','Vous allez être contacter sous peu');
-        return $this->redirectToRoute('app_index');
-    } else {
-        return $this->render('contact/index.html.twig',[
-            'form' => $form
-        ]);
-    }
- }
+    public function index(Request $request, ContactManager $cm): Response
+    {
+        // Vérification que l'utilisateur a le rôle de client
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
+        // Création d'un nouveau contact
+        $contact = new Contact();
+
+        // Création d'un formulaire de contact
+        $form = $this->createForm(ContactFormType::class, $contact);
+
+        // Traitement du formulaire
+        $form->handleRequest($request);
+
+        // Vérification que le formulaire a été soumis et est valide
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Enregistrement du contact
+            $cm->setContact($contact);
+
+            // Ajout d'un message de succès pour informer l'utilisateur que son message a été envoyé
+            $this->addFlash('success', 'Vous allez être contacter sous peu');
+
+            // Redirection vers la page d'accueil
+            return $this->redirectToRoute('app_index');
+        } else {
+            // Rendu de la vue du formulaire de contact si le formulaire n'a pas été soumis ou est invalide
+            return $this->render('contact/index.html.twig', [
+                'form' => $form
+            ]);
+        }
+    }
+
+    // Définition de la route pour la page de politique de confidentialité
     #[Route('/politique_de_confidentialite', name: 'app_pdf')]
     public function politiqueconf(): Response
     {
-   
-    return $this->render('contact/politique_de_confidentialite.html.twig');
- }
+        // Rendu de la vue de politique de confidentialité
+        return $this->render('contact/politique_de_confidentialite.html.twig');
+    }
 
-
-
-   #[Route('/mention_legale', name: 'app_mention_legale')]
- public function mention_legale(): Response
- {
-    
-    return $this->render('contact/mention_legale.html.twig');
- }
-
-
-
-
-
-
+    // Définition de la route pour la page de mention légale
+    #[Route('/mention_legale', name: 'app_mention_legale')]
+    public function mention_legale(): Response
+    {
+        // Rendu de la vue de mention légale
+        return $this->render('contact/mention_legale.html.twig');
+    }
 }
