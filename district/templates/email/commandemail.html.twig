@@ -1,30 +1,25 @@
-<h1>Chère/Cher {{ user.nom }}</h1>
+<h1>Chère/Cher {{ user.nom }},</h1>
 
-<p> Nous vous remercions pour votre récente commande sur The District. Nous sommes ravis de vous informer que votre commande a été bien reçue et est actuellement en cours de traitement.
-    Détails de la commande :</P>
-    
-        <P>Nom du client : {{ user.nom }} {{ user.prenom }}</P>
-        <P>Adresse de livraison : {{ user.adresse }}</P>
-        <P>Date de commande : le {{ datejour }} a {{ dateheure }}</P>
-     
-     
-     
-     
-    <P>Étapes suivantes :</P>
-    
-        <P>Préparation de votre commande : Nos équipes sont en train de préparer soigneusement vos articles pour garantir leur fraîcheur et leur qualité.</P>
-        <P>Expédition : Votre commande sera expédiée sous 15min .</P>
-        <P>Livraison : La livraison est estimée pour le {{ datelivraison }}.</P>
-    
-    <P>Paiement :</P>
-    
-    <P>Le montant total de votre commande est de {{ commande.total }} euros, qui a été débité de votre mode de paiement sélectionné.</P>
-    
-    <P>Si vous avez des questions ou besoin d'assistance supplémentaire, n'hésitez pas à nous contacter à reply@thedistrict.com . Notre équipe est à votre disposition pour vous aider.</P>
-    
-    <P>Nous vous remercions de votre confiance et espérons que vous apprécierez vos produits !</P>
-    
-    <P>Cordialement,</P>
-    
-    <P>The District</P>
-</p>
+<p>Merci pour votre récente commande sur The District ! Nous sommes ravis de vous informer que votre commande a bien été reçue et est actuellement en cours de traitement. Voici les détails :</p>
+
+<p><strong>Nom du client :</strong> {{ user.nom }} {{ user.prenom }}</p>
+<p><strong>Adresse de livraison :</strong> {{ user.adresse }}</p>
+<p><strong>Date de commande :</strong> le {{ datejour }} à {{ dateheure }}</p>
+
+<h2>Étapes suivantes :</h2>
+
+<p><strong>Préparation :</strong> Nos équipes préparent soigneusement vos articles pour garantir leur fraîcheur et leur qualité.</p>
+<p><strong>Expédition :</strong> Votre commande sera expédiée dans les 15 minutes.</p>
+<p><strong>Livraison :</strong> La livraison est prévue pour le {{ datelivraison }}.</p>
+
+<h2>Paiement :</h2>
+
+<p>Le montant total de votre commande est de <strong>{{ commande.total }} euros</strong>, débité de votre mode de paiement sélectionné.</p>
+
+<p>Pour toute question ou assistance, contactez-nous à reply@thedistrict.com Notre équipe est à votre disposition.</p>
+
+<p>Merci de votre confiance, et nous espérons que vous apprécierez vos produits !</p>
+
+<p>Cordialement,</p>
+
+<p>L'équipe de The District</p>
