@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
+
 
 class CommandeType extends AbstractType
 {
@@ -23,7 +25,7 @@ class CommandeType extends AbstractType
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer votre nom.',
                     ]),
@@ -39,7 +41,7 @@ class CommandeType extends AbstractType
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer votre prénom.',
                     ]),
@@ -55,7 +57,7 @@ class CommandeType extends AbstractType
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer votre numéro de téléphone.',
                     ]),
@@ -71,7 +73,7 @@ class CommandeType extends AbstractType
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer votre adresse.',
                     ]),
@@ -87,7 +89,7 @@ class CommandeType extends AbstractType
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer votre code postal.',
                     ]),
@@ -97,13 +99,17 @@ class CommandeType extends AbstractType
                         'max' => 10,
                         'maxMessage' => 'Votre code postal ne doit pas contenir plus de {{ limit }} caractères.',
                     ]),
+                    new Regex([
+                        'pattern' => '/^[0-9]{5}$/',
+                        'message' => 'Le code postal doit être composé de 5 chiffres.',
+                    ]),
                 ],
             ])
             ->add('ville', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer votre ville.',
                     ]),
@@ -117,7 +123,7 @@ class CommandeType extends AbstractType
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'contraintes' => [
+                'constraints' => [
                     new IsTrue([
                         'message' => 'Vous devez accepter nos termes.',
                     ]),

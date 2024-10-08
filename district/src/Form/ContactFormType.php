@@ -1,8 +1,10 @@
 <?php
 
+
+
 namespace App\Form;
 
-use App\Entity\Contact;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,17 +18,16 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Regex;
 
-
 class ContactFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Nom', TextType::class, [
+            ->add('nom', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [ // corrected here
                     new NotBlank([
                         'message' => 'Veuillez entrer votre nom.',
                     ]),
@@ -38,11 +39,11 @@ class ContactFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('Prenom', TextType::class, [
+            ->add('prenom', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [ // corrected here
                     new NotBlank([
                         'message' => 'Veuillez entrer votre prénom.',
                     ]),
@@ -54,11 +55,11 @@ class ContactFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('Email', EmailType::class, [
+            ->add('email', EmailType::class, [
                 'attr' => [
-                    'class' => 'col-3 form-control texte'
+                    'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [ // corrected here
                     new NotBlank([
                         'message' => 'Veuillez entrer votre adresse e-mail.',
                     ]),
@@ -67,11 +68,11 @@ class ContactFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('Telephone', TextType::class, [
+            ->add('telephone', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [ // corrected here
                     new NotBlank([
                         'message' => 'Veuillez entrer votre numéro de téléphone.',
                     ]),
@@ -81,12 +82,12 @@ class ContactFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('Demande', TextareaType::class, [
+            ->add('demande', TextareaType::class, [
                 'label' => 'Votre Demande',
                 'attr' => [
                     'class' => 'col-3 form-control'
                 ],
-                'contraintes' => [
+                'constraints' => [ // corrected here
                     new NotBlank([
                         'message' => 'Veuillez entrer votre demande.',
                     ]),
@@ -98,7 +99,7 @@ class ContactFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('Save', SubmitType::class, [
+            ->add('save', SubmitType::class, [
                 'label' => 'Envoyer',
                 'attr' => [
                     'class' => 'btn color-B09595 rounded-pill '
@@ -113,7 +114,7 @@ class ContactFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Contact::class,
+            'data_class' => User::class,
         ]);
     }
 }

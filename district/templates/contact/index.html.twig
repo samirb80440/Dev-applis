@@ -14,34 +14,35 @@
 <div class='container mt-4'>
     <div class='row justify-content-center'>
 
-  
-                <div class="couleur col-6 mb-3">
-                    {{ form_row(form.Nom) }}
+       <div class="couleur col-6 mb-3">
+                    {{ form_row(form.nom) }}
                 </div>
 
                 <div class=" couleur col-6 mb-3">
-                    {{ form_row(form.Prenom) }}
+                    {{ form_row(form.prenom) }}
                 </div>
 
                 <div class=" couleur col-6 mb-3">
-                    {{ form_row(form.Email) }}
+                    {{ form_row(form.email) }}
                 </div>
 
                 <div class=" couleur col-6 mb-3">
-                    {{ form_row(form.Telephone) }}
+                    {{ form_row(form.telephone) }}
                 </div>
 
                 <div class=" couleur col-12 mb-3">
-                    {{ form_row(form.Demande) }}
+                    {{ form_row(form.demande) }}
                 </div>
 
                 <div class="mt-3 justify-content-center">
-                    {{ form_row(form.Save) }}
+                    {{ form_row(form.save) }}
                 </div>
                 
             </div>
         </div>
     {{ form_end(form) }}
+
+
 
 
 {% endblock %}

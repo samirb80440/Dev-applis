@@ -9,23 +9,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Form\ContactFormType;
+use Doctrine\ORM\EntityManager;
 
 // Définition de la classe ContactController qui hérite de AbstractController
 class ContactController extends AbstractController
 {
     // Définition de la route pour la page de contact
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request, ContactManager $cm): Response
+    public function index(Request $request, ContactManager $cm, EntityManagerInterface $em): Response
     {
         // Vérification que l'utilisateur a le rôle de client
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        // Création d'un nouveau contact
-        $contact = new Contact();
+       
+        $user = $this->getUser();
 
         // Création d'un formulaire de contact
-        $form = $this->createForm(ContactFormType::class, $contact);
+        $form = $this->createForm(ContactFormType::class, $user);
 
         // Traitement du formulaire
         $form->handleRequest($request);
@@ -33,7 +36,7 @@ class ContactController extends AbstractController
         // Vérification que le formulaire a été soumis et est valide
         if ($form->isSubmitted() && $form->isValid()) {
             // Enregistrement du contact
-            $cm->setContact($contact);
+            $cm->setContact($user);
 
             // Ajout d'un message de succès pour informer l'utilisateur que son message a été envoyé
             $this->addFlash('success', 'Vous allez être contacter sous peu');
