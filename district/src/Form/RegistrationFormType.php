@@ -86,6 +86,11 @@ class RegistrationFormType extends AbstractType
                         'minMessage' => 'Votre adresse doit contenir au moins {{ limit }} caractères.',
                         'max' => 100,
                         'maxMessage' => 'Votre adresse ne doit pas contenir plus de {{ limit }} caractères.',
+
+                        new Regex([
+                            'pattern' => '/^[a-zA-Z0-9\s]+$/',
+                            'message' => 'L\'adresse ne doit contenir que des lettres, des chiffres et des espaces.',
+                        ]),
                     ]),
                 ]
             ])

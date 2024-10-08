@@ -92,7 +92,7 @@ class CommandeType extends AbstractType
                         'maxMessage' => 'Votre adresse ne doit pas contenir plus de {{ limit }} caractères.',
                     ]),
                     new Regex([
-                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'pattern' =>  '/^[a-zA-Z0-9\s]+$/',
                         'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
                     ]),
                 ],
