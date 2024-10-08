@@ -62,7 +62,7 @@ class RegistrationController extends AbstractController
 
             
             // Ajout d'un message flash pour notifier l'utilisateur
-            $this->addFlash('success','Votre compte client a biern été crées');
+            $this->addFlash('success','Votre compte client a bien été crées');
              // Connexion de l'utilisateur à l'aide de l'authentificateur UserFormAuthenticator
             return $security->login($user, UserFormAuthenticator::class, 'main');
         }
