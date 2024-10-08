@@ -35,6 +35,10 @@ class CommandeType extends AbstractType
                         'max' => 50,
                         'maxMessage' => 'Votre nom ne doit pas contenir plus de {{ limit }} caractères.',
                     ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
+                    ]),
                 ],
             ])
             ->add('prenom', TextType::class, [
@@ -50,6 +54,10 @@ class CommandeType extends AbstractType
                         'minMessage' => 'Votre prénom doit contenir au moins {{ limit }} caractères.',
                         'max' => 50,
                         'maxMessage' => 'Votre prénom ne doit pas contenir plus de {{ limit }} caractères.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
                     ]),
                 ],
             ])
@@ -82,6 +90,10 @@ class CommandeType extends AbstractType
                         'minMessage' => 'Votre adresse doit contenir au moins {{ limit }} caractères.',
                         'max' => 100,
                         'maxMessage' => 'Votre adresse ne doit pas contenir plus de {{ limit }} caractères.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
                     ]),
                 ],
             ])
@@ -118,6 +130,10 @@ class CommandeType extends AbstractType
                         'minMessage' => 'Votre ville doit contenir au moins {{ limit }} caractères.',
                         'max' => 50,
                         'maxMessage' => 'Votre ville ne doit pas contenir plus de {{ limit }} caractères.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
                     ]),
                 ],
             ])

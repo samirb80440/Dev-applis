@@ -37,6 +37,10 @@ class ContactFormType extends AbstractType
                         'max' => 50,
                         'maxMessage' => 'Votre nom ne doit pas contenir plus de {{ limit }} caractères.',
                     ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
+                    ]),
                 ],
             ])
             ->add('prenom', TextType::class, [
@@ -52,6 +56,10 @@ class ContactFormType extends AbstractType
                         'minMessage' => 'Votre prénom doit contenir au moins {{ limit }} caractères.',
                         'max' => 50,
                         'maxMessage' => 'Votre prénom ne doit pas contenir plus de {{ limit }} caractères.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
                     ]),
                 ],
             ])
@@ -96,6 +104,10 @@ class ContactFormType extends AbstractType
                         'minMessage' => 'Votre demande doit contenir au moins {{ limit }} caractères.',
                         'max' => 500,
                         'maxMessage' => 'Votre demande ne doit pas contenir plus de {{ limit }} caractères.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
                     ]),
                 ],
             ])
