@@ -74,6 +74,10 @@ class ContactFormType extends AbstractType
                     new Email([
                         'message' => 'Veuillez entrer une adresse e-mail valide.',
                     ]),
+                    new Regex([
+                        'pattern' => '/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/',
+                        'message' => 'Veuillez entrer une adresse e-mail valide.',
+                    ]),
                 ],
             ])
             ->add('telephone', TextType::class, [

@@ -18,70 +18,142 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom',TextType::class,[
+            ->add('nom', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre nom.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
+                    ]),
                 ]
             ])
-            ->add('prenom',TextType::class,[
+            ->add('prenom', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre prénom.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z\s]+$/',
+                        'message' => 'Le prénom ne doit contenir que des lettres et des espaces.',
+                    ]),
                 ]
             ])
-            ->add('telephone',TextType::class,[
+            ->add('telephone', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre numéro de téléphone.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[0-9\s]+$/',
+                        'message' => 'Le numéro de téléphone ne doit contenir que des chiffres et des espaces.',
+                    ]),
+                    new Length([
+                        'min' => 10,
+                        'minMessage' => 'Votre numéro de téléphone doit contenir au moins {{ limit }} chiffres.',
+                        'max' => 15,
+                        'maxMessage' => 'Votre numéro de téléphone ne doit pas contenir plus de {{ limit }} chiffres.',
+                    ]),
                 ]
             ])
-            ->add('adresse',TextType::class,[
+            ->add('adresse', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre adresse.',
+                    ]),
+                    new Length([
+                        'min' => 10,
+                        'minMessage' => 'Votre adresse doit contenir au moins {{ limit }} caractères.',
+                        'max' => 100,
+                        'maxMessage' => 'Votre adresse ne doit pas contenir plus de {{ limit }} caractères.',
+                    ]),
                 ]
             ])
-            ->add('cp',TextType::class,[
+            ->add('cp', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre code postal.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[0-9]{5}$/',
+                        'message' => 'Le code postal doit être composé de 5 chiffres.',
+                    ]),
                 ]
             ])
-            ->add('ville',TextType::class,[
+            ->add('ville', TextType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre ville.',
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Votre ville doit contenir au moins {{ limit }} caractères.',
+                        'max' => 50,
+                        'maxMessage' => 'Votre ville ne doit pas contenir plus de {{ limit }} caractères.',
+                    ]),
                 ]
             ])
-            ->add('email',EmailType::class,[
+            ->add('email', EmailType::class, [
                 'attr' => [
                     'class' => 'col-3 form-control'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre adresse e-mail.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/',
+                        'message' => 'Veuillez entrer une adresse e-mail valide.',
+                    ]),
                 ]
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                                'mapped' => false,
+                'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter nos termes.',
                     ]),
                 ],
             ])
             ->add('Password', PasswordType::class, [
-                                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password',
-                            'class' => 'col-3 form-control'    
-                        ],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'class' => 'col-3 form-control'
+                ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Veuillez entrer un mot de passe.',
                     ]),
                     new Length([
                         'min' => 3,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères.',
                         'max' => 4096,
                     ]),
                 ],
@@ -95,8 +167,7 @@ class RegistrationFormType extends AbstractType
                 'row_attr' => [
                     'class' => 'd-flex justify-content-end'
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
@@ -106,7 +177,7 @@ class RegistrationFormType extends AbstractType
         ]);
     }
 
-    public function setRole(PostSubmitEvent $event):Void
+    public function setRole(PostSubmitEvent $event): void
     {
         $data = $event->getData();
         $data->setRoles(['ROLE_CLIENT']);
