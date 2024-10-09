@@ -51,10 +51,10 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
              // Récupération du mot de passe en clair à partir du formulaire
             /** @var string $plainPassword */
-            $plainPassword = $form->get('plainPassword')->getData();
+            $Password = $form->get('Password')->getData();
 
             // Hachage du mot de passe en clair
-            $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
+            $user->setPassword($userPasswordHasher->hashPassword($user, $Password));
 
             // Persistance de l'entité User
             $entityManager->persist($user);

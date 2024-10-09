@@ -39,7 +39,7 @@ class ContactController extends AbstractController
             $cm->setContact($user);
 
             // Ajout d'un message de succès pour informer l'utilisateur que son message a été envoyé
-            $this->addFlash('success', 'Vous allez être contacter sous peu');
+            $this->addFlash('success', 'Vous allez être contacté sous peu');
 
             // Redirection vers la page d'accueil
             return $this->redirectToRoute('app_index');

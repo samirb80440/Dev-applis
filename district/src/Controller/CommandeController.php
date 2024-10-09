@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use App\EventSubvriber\MailCommandeSubscriber;
 
 // Définition de la classe CommandeController qui hérite de AbstractController
 class CommandeController extends AbstractController

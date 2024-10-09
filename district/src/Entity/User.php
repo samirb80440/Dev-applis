@@ -66,16 +66,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Contact::class, mappedBy: 'user')]
     private Collection $contact;
 
-    #[ORM\Column(length: 255)]
-    private ?string $demande = null;
+  
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $adresse_facturation = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $mode_paiement = null;
+    private ?string $mode_paiement =null;
 
-   
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $demande = null;
 
    
 
@@ -87,10 +87,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         
     }
 
-
-
-
-    
     public function getId(): ?int
     {
         return $this->id;
@@ -301,17 +297,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getDemande(): ?string
-    {
-        return $this->demande;
-    }
-
-    public function setDemande(string $demande): static
-    {
-        $this->demande = $demande;
-
-        return $this;
-    }
+  
 
     public function getAdresseFacturation(): ?string
     {
@@ -337,6 +323,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getDemande(): ?string
+    {
+        return $this->demande;
+    }
+
+    public function setDemande(?string $demande): static
+    {
+        $this->demande = $demande;
+
+        return $this;
+    }
+
+  
   
    
   
