@@ -140,8 +140,24 @@ class CommandeType extends AbstractType
                 ],
             ])
             ->add('adresse_facturation', TextareaType::class, [
-                'attr' => ['class' => 'col-3 form-control']
+                'attr' => ['class' => 'col-3 form-control'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre adresse.',
+                    ]),
+                    new Length([
+                        'min' => 10,
+                        'minMessage' => 'Votre adresse doit contenir au moins {{ limit }} caractères.',
+                        'max' => 100,
+                        'maxMessage' => 'Votre adresse ne doit pas contenir plus de {{ limit }} caractères.',
+                    ]),
+                    new Regex([
+                        'pattern' =>  '/^[a-zA-Z0-9\s]+$/',
+                        'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
+                    ]),
+                ],
             ])
+            
             ->add('mode_paiement', ChoiceType::class, [
                 'attr' => ['class' => 'col-3 form-control'],
                 'choices' => [
