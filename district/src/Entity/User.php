@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -67,6 +68,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $demande = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $adresse_facturation = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $mode_paiement = null;
 
    
 
@@ -302,6 +309,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDemande(string $demande): static
     {
         $this->demande = $demande;
+
+        return $this;
+    }
+
+    public function getAdresseFacturation(): ?string
+    {
+        return $this->adresse_facturation;
+    }
+
+    public function setAdresseFacturation(string $adresse_facturation): static
+    {
+        $this->adresse_facturation = $adresse_facturation;
+
+        return $this;
+    }
+
+    public function getModePaiement(): ?string
+    {
+        return $this->mode_paiement;
+    }
+
+    public function setModePaiement(string $mode_paiement): static
+    {
+        $this->mode_paiement = $mode_paiement;
 
         return $this;
     }

@@ -14,6 +14,8 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 
 class CommandeType extends AbstractType
@@ -136,6 +138,21 @@ class CommandeType extends AbstractType
                         'message' => 'Le nom ne doit contenir que des lettres et des espaces.',
                     ]),
                 ],
+            ])
+            ->add('adresse_facturation', TextareaType::class, [
+                'attr' => ['class' => 'col-3 form-control']
+            ])
+            ->add('mode_paiement', ChoiceType::class, [
+                'attr' => ['class' => 'col-3 form-control'],
+                'choices' => [
+                    'Visa' => 'Visa',
+                    'MasterCard' => 'MasterCard',
+                    'Paypal' => 'Paypal',
+                ],
+                'expanded' => false,
+
+                'multiple' => false,
+                'placeholder' => 'Sélectionnez un moyen de paiement.'
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
